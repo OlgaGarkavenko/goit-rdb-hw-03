@@ -1,6 +1,6 @@
-# goit-rdb-hw-03 — Seoul Bike Sharing Demand у PostgreSQL
+# goit-rdb-hw-03 - Seoul Bike Sharing Demand у PostgreSQL
 
-Домашнє завдання 3: повний цикл роботи з сирим CSV — завантаження в PostgreSQL через `COPY FROM STDIN`, staging- і clean-рівні, аудит якості даних, аналіз розподілів та аномалій, 11 DQL/EDA-запитів і reflection.
+Домашнє завдання 3: повний цикл роботи з сирим CSV - завантаження в PostgreSQL через `COPY FROM STDIN`, staging- і clean-рівні, аудит якості даних, аналіз розподілів та аномалій, 11 DQL/EDA-запитів і reflection.
 
 ## Датасет
 
@@ -18,7 +18,7 @@
 Вибірка не робиться - датасет малий, тому використовуються **всі 8 760 рядків**.
 
 1. Notebook завантажує офіційний ZIP з UCI в `data/raw/` (лише якщо його там ще немає).
-2. `SeoulBikeData.csv` декодується явно (UTF-8, а при невдачі — cp1252, бо заголовки джерела містять символ `°`) і читається з `dtype=str`, щоб значення не змінювалися.
+2. `SeoulBikeData.csv` декодується явно (UTF-8, а при невдачі - cp1252, бо заголовки джерела містять символ `°`) і читається з `dtype=str`, щоб значення не змінювалися.
 3. Колонки позиційно перейменовуються в `snake_case` з суфіксом `_raw`, результат зберігається як UTF-8 CSV: `data/hw3_seoul_bike.csv`.
 4. CSV завантажується через `COPY ... FROM STDIN` у `hw3_bike_staging` (усі колонки `TEXT`).
 5. `INSERT INTO hw3_bike_rentals ... SELECT` очищує та приводить типи (`DATE`, `TIMESTAMPTZ` у поясі `Asia/Seoul`, `NUMERIC(p,s)`, `BOOLEAN`, `CHECK`, `UNIQUE (rental_date, rental_hour)`).
@@ -36,7 +36,7 @@ goit-rdb-hw-03/
 ## Запуск
 
 1. Відкрити `hw3_seoul_bike.ipynb` у Google Colab (*File → Upload notebook* або з GitHub).
-2. *Runtime → Restart session and run all*.
+2. *Runtime -> Restart session and run all*.
 
 Notebook сам встановлює залежності (`pgserver`, `psycopg2-binary`, `sqlalchemy`, `pandas`, `pyarrow`, `ucimlrepo`), піднімає PostgreSQL через `pgserver` у `/tmp/hw3_pg`, завантажує дані з UCI і виконує всі кроки. Ручне редагування шляхів чи SQL не потрібне.
 
